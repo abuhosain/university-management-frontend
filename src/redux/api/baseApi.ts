@@ -24,6 +24,10 @@ if(result.error?.status === 404){
   toast.error(result.error.data.message)
 }
 
+if(result.error?.status === 403){
+  toast.error(result.error.data.message)
+}
+
 
   // Check if there's an error and handle it accordingly
   if (result.error?.status === 401) {

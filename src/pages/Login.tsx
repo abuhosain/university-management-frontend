@@ -24,8 +24,10 @@ const Login = () => {
   // const {register} = useFormContext()
 
   const defaultValues = {
-    userId: "A-0001",
-    password: "admin123",
+    // userId: "A-0001",
+    // password: "admin123",
+    userId: "2026010001",
+    password: "student123",
   };
 
   const onSubmit = async (data: FieldValues) => {
@@ -39,8 +41,13 @@ const Login = () => {
       const user = verifyToken(res.data.accessToken) as unknown as TUser;
       dispatch(setUser({ user: user, token: res.data.accessToken }));
       toast.success("logged in", { id: toastId, duration: 2000 });
-      //  console.log(res)
-      navigate(`/${user.role}/dashboard`);
+       console.log(res)
+      if(res.data.needsPasswordChange){
+        navigate(`/change-password`);
+      }else{
+        navigate(`/${user.role}/dashboard`);
+      }
+     
     } catch (err) {
       toast.error("something went wrong", { id: toastId, duration: 2000 });
     }

@@ -2,7 +2,7 @@ import ManinLayout from "./components/layout/ManinLayout";
 import ProtectedRoute from "./components/layout/ProtectedRoute";
 
 function App() {
-  return <ProtectedRoute><ManinLayout /></ProtectedRoute>;
+  return <ProtectedRoute role={undefined}><ManinLayout /></ProtectedRoute>;
 }
 
 export default App;
