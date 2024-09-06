@@ -6,12 +6,12 @@ import { TQueryParams } from "../../../types";
 
 export type TTbaleData = Pick<
   TAcademicSemester,
-    | "name" | "year" | "startMonth" | "endMonth"
+  "name" | "year" | "startMonth" | "endMonth"
 >;
 
 const AcademicSemester = () => {
   const [params, setParams] = useState<TQueryParams[] | undefined>(undefined);
-  const { data: semesterData,  isFetching } = useGetAllSemestersQuery(params);
+  const { data: semesterData, isFetching } = useGetAllSemestersQuery(params);
   const tableData = semesterData?.data?.map(
     ({ _id, name, startMonth, endMonth, year }) => ({
       key: _id,
@@ -70,15 +70,15 @@ const AcademicSemester = () => {
       dataIndex: "endMonth",
     },
     {
-      title : "Action",
-      render : () => {
+      title: "Action",
+      render: () => {
         return (
           <div>
             <Button>Update</Button>
           </div>
-        )
-      }
-    }
+        );
+      },
+    },
   ];
 
   const onChange: TableProps<TTbaleData>["onChange"] = (
@@ -89,7 +89,7 @@ const AcademicSemester = () => {
   ) => {
     console.log("params", filters, extra);
     if (extra.action === "filter") {
-      const queryParams : TQueryParams[] = [];
+      const queryParams: TQueryParams[] = [];
 
       filters.name?.forEach((item) =>
         queryParams.push({ name: "name", value: item })
@@ -102,11 +102,9 @@ const AcademicSemester = () => {
     }
   };
 
- 
-
   return (
     <Table
-    loading={isFetching}
+      loading={isFetching}
       columns={columns}
       dataSource={tableData}
       onChange={onChange}

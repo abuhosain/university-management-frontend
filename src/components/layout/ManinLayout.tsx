@@ -12,10 +12,10 @@ const ManinLayout = () => {
     dispatch(logout());
   }
   return (
-    <Layout style={{ height: "100vh" }}>
+    <Layout style={{ height: "100vh", overflow : "scroll", }}>
       <Sidebar />
       <Layout>
-        <Header><Button onClick={handleLogout}>Logout</Button>{""}</Header>
+        <Header style={{position : "sticky", top : "0", left : "0", zIndex : "100"}}><Button onClick={handleLogout}>Logout</Button>{""}</Header>
         <Content style={{ margin: "24px 16px 0" }}>
           <div
             style={{
